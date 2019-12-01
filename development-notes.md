@@ -22,11 +22,15 @@ My goal here is to document the steps I take to get a TypeScript library up-and-
 - create `LICENSE`
 
 - create `package.json` [ref](https://yarnpkg.com/lang/en/docs/package-json/), this seems to be analogous to the DESCRIPTION file in an R package. Initially populated with:
- - name
- - description
- - author
- - version
- - license
+  - name
+  - description
+  - author
+  - version
+  - license
+
+- create `.gitignore`, took a guess using Vega-Lite `.gitignore` as a template
+
+
 
 
 
