@@ -30,6 +30,8 @@ My goal here is to document the steps I take to get a TypeScript library up-and-
 
 - create `.gitignore`, took a guess using Vega-Lite `.gitignore` as a template
 
+- at command-line: `yarn` to initialize `yarn.lock` file. Like Vega-Lite, we'll use yarn to manage dependencies.
+
 
 
 
