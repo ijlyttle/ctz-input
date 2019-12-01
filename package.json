@@ -1,0 +1,7 @@
+{
+  "name": "ctz-input",
+  "description": "Notebook-style HTML inputs, inspired by Observable",
+  "author": {"name": "Ian Lyttle"},
+  "version": "0.0.1",
+  "license": "MIT"
+}

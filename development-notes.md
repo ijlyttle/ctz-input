@@ -6,7 +6,12 @@ My goal here is to document the steps I take to get a TypeScript library up-and-
 
 ## Tools
 
-- VS Code, TODO: list extensions
+- Editor: VS Code. Like [Vega-Lite](https://github.com/vega/vega-lite/blob/master/CONTRIBUTING.md#suggested-programming-environment), ESLint, Prettier, vscode-jest-runner
+
+  - there does not seem to be a notion of a "project" in VS Code. Instead, you just point it at
+  a directory, and off you go!
+
+- Node: Following [Vega-Lite](https://github.com/vega/vega-lite/blob/master/CONTRIBUTING.md#repository-setup): use homebrew, then `brew install node`.
 
 ## Steps
 
@@ -15,6 +20,13 @@ My goal here is to document the steps I take to get a TypeScript library up-and-
 - create `README.md`, `development-notes.md`
 
 - create `LICENSE`
+
+- create `package.json` [ref](https://yarnpkg.com/lang/en/docs/package-json/), this seems to be analogous to the DESCRIPTION file in an R package. Initially populated with:
+ - name
+ - description
+ - author
+ - version
+ - license
 
 
 
