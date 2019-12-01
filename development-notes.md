@@ -38,6 +38,21 @@ My goal here is to document the steps I take to get a TypeScript library up-and-
 
 - use `yarn version` to increment the version. Getting the sense that yarn acts a bit like devtools does in R, but that we use `package.json` and `tsconfig.json` (which we haven't yet created) to customize the behavior.
 
+- `yarn add eslint --dev` to add ESLint
+
+- `tsc --init` to create `tsconfig.json` from template:
+  - changed `target` to `"ES2015"`, `module` to `"es2015"`, following Vega-Lite
+
+- *Goals*:
+ - get this into a state where the ts compiles and the js/css is put into a build directory
+ - include radio and slider
+ - import the build into {ctlyzr} (this goal is external to this repository)
+ - get some testing going, perhaps a combination of a visual-regression HMTL page and a set of tests to make sure it behaves as expected.
+ - set up GH Actions for CI, etc.
+
+- create `index.ts` file to serve as entry-point
+  - in `CtzInput.ts`, `export` the class
+  - in `index.ts`: `export {CtzInput} from './CtzInput';`
 
 
 

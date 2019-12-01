@@ -1,9 +1,15 @@
-class CtzInput {
+export class CtzInput {
+  _id: string;
+  _container: HTMLElement;
+  _label: HTMLLabelElement;
+  _form: HTMLFormElement;
+  _description: HTMLElement;
+  _value: any;
 
-  constructor(id, cls) {
+  constructor(id: string, cls: string) {
 
     /* determine parent-element */
-    const parent = document.getElementById(id);
+    const parent: HTMLElement | null = document.getElementById(id);
 
     /* id - set once using private method */
     this._id = `${id}-container`;
@@ -29,8 +35,10 @@ class CtzInput {
     this._container.appendChild(this._form);
     this._container.appendChild(this._description);
 
-    /* add container to parent */
-    parent.appendChild(this._container);
+    if (parent !== null) {
+      /* add container to parent */
+      parent.appendChild(this._container);
+    }
   }
 
   get id() {
@@ -45,7 +53,7 @@ class CtzInput {
     return this._label.innerText;
   }
 
-  set label_text(label) {
+  set label_text(label: string) {
     this._label.innerText = label;
   }
 
@@ -53,7 +61,7 @@ class CtzInput {
     return this._description.innerText;
   }
 
-  set description_text(description) {
+  set description_text(description: string) {
     this._description.innerText = description;
   }
 
@@ -61,7 +69,7 @@ class CtzInput {
     return this._value;
   }
 
-  considerSubmit(submit, verb) {
+  considerSubmit(submit: string | boolean | undefined, verb: string) {
 
     if (submit) {
 
@@ -69,10 +77,10 @@ class CtzInput {
        *   add button
        *   supress the input event for at the "top" level
        */
-      const label = typeof submit == 'string' ? submit : 'Submit';
+      const label: string = typeof submit === 'string' ? submit : 'Submit';
 
       // create, populate submit-button
-      const btnSubmit = document.createElement('input');
+      const btnSubmit: HTMLInputElement = document.createElement('input');
       btnSubmit.setAttribute('type', 'submit');
       btnSubmit.setAttribute('value', label);
 
@@ -80,14 +88,16 @@ class CtzInput {
       this._form.appendChild(btnSubmit);
 
       // prevent the default action (page reload)
-      this._form.onsubmit = event => {
+      this._form.onsubmit = (event: Event) => {
         event.preventDefault();
       };
 
-      // inhibit the event for which the "submit" button is gate-keeping
-      this._container[verb] = event => {
-        event.stopPropagation();
-      };
+      // TODO: need a better way to enforce legal values of `verb`
+      if (verb === "oninput" || verb === "onchange") {
+        this._container[verb] = (event: Event) => {
+          event.stopPropagation();
+        };
+      }
 
     }
 
