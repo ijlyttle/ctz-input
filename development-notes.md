@@ -28,9 +28,17 @@ My goal here is to document the steps I take to get a TypeScript library up-and-
   - version
   - license
 
+  It will also contain things like build scripts, etc.
+
 - create `.gitignore`, took a guess using Vega-Lite `.gitignore` as a template
 
-- at command-line: `yarn` to initialize `yarn.lock` file. Like Vega-Lite, we'll use yarn to manage dependencies.
+- at command-line: `yarn` to initialize `yarn.lock` file. Like Vega-Lite, we'll use yarn to manage dependencies. It acts a little bit like `usethis::use_package()`.
+
+- create directories `src`, `src/css`; populate with `CtzInput.ts`, `CtzInput.css`
+
+- use `yarn version` to increment the version. Getting the sense that yarn acts a bit like devtools does in R, but that we use `package.json` and `tsconfig.json` (which we haven't yet created) to customize the behavior.
+
+
 
 
 
