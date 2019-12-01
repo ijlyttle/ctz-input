@@ -38,7 +38,9 @@ My goal here is to document the steps I take to get a TypeScript library up-and-
 
 - use `yarn version` to increment the version. Getting the sense that yarn acts a bit like devtools does in R, but that we use `package.json` and `tsconfig.json` (which we haven't yet created) to customize the behavior.
 
-- `yarn add eslint --dev` to add ESLint
+- yarn:
+  - `yarn add eslint --dev` to add ESLint
+  - `yarn add typescript --dev`
 
 - `tsc --init` to create `tsconfig.json` from template:
   - changed `target` to `"ES2015"`, `module` to `"es2015"`, following Vega-Lite
@@ -54,8 +56,17 @@ My goal here is to document the steps I take to get a TypeScript library up-and-
   - in `CtzInput.ts`, `export` the class
   - in `index.ts`: `export {CtzInput} from './CtzInput';`
 
+- in `package.json`, add element to `"scripts"`:
+    `"build": "yarn build:only"`
+    `"build:only": "tsc && rollup -c"`
 
+- rollup:
+  - some notes on using rollup: <https://hackernoon.com/building-and-publishing-a-module-with-typescript-and-rollup-js-faa778c85396>
+  - basically, I replicated what Wenyu did with ggvega:
+    - added `"files": ["src/index.ts"]` to `tsconfig.json`
+    - added `rollup.config.js`
+    - added `rollup-plugin-commonjs`, `rollup-plugin-json`, `rollup-plugin-node-resolve`, as development dependencies
 
-
-
-
+- things that are not clear to me:
+  - how to get from the "output" of rollup to a file that can be used in an HTMLWidgets library
+  - how to move css
