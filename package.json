@@ -6,12 +6,11 @@
   },
   "version": "0.0.2",
   "license": "MIT",
-  "module": "build/ctz-input.js",
+  "main": "build/ctz-input.js",
   "devDependencies": {
     "eslint": "^6.7.2",
     "rollup": "^1.27.7",
     "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "typescript": "^3.7.2"
   },

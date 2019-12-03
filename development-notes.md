@@ -61,12 +61,17 @@ My goal here is to document the steps I take to get a TypeScript library up-and-
     `"build:only": "tsc && rollup -c"`
 
 - rollup:
-  - some notes on using rollup: <https://hackernoon.com/building-and-publishing-a-module-with-typescript-and-rollup-js-faa778c85396>
-  - basically, I replicated what Wenyu did with ggvega:
+  - some [notes on using rollup](https://hackernoon.com/building-and-publishing-a-module-with-typescript-and-rollup-js-faa778c85396)
+  - basically, I replicated what Wenyu did with ggvega, but I also found [this guide](https://remarkablemark.org/blog/2019/07/12/rollup-commonjs-umd/):
     - added `"files": ["src/index.ts"]` to `tsconfig.json`
     - added `rollup.config.js`
-    - added `rollup-plugin-commonjs`, `rollup-plugin-json`, `rollup-plugin-node-resolve`, as development dependencies
+    - added `rollup-plugin-commonjs`, `rollup-plugin-node-resolve`, as development dependencies
+
+- at this point, after `yarn build`, I can put the contents of `ctz-input.js` in the browser; the name `ctzInput` is available,
+implying `ctzInput.CtzInput`, etc.
 
 - things that are not clear to me:
-  - how to get from the "output" of rollup to a file that can be used in an HTMLWidgets library
-  - how to move css
+  - how to move css into place
+  - how to test
+  - how to install in an HTMLWidget (how to test an HTMLWidget)
+
