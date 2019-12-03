@@ -2,7 +2,7 @@ import commonjs from 'rollup-plugin-commonjs';
 import nodeResolve from 'rollup-plugin-node-resolve';
 
 export default {
-  input: 'src/index.js',
+  input: 'build/index.js',
   output: {
     file: 'build/ctz-input.js',
     format: 'umd',
