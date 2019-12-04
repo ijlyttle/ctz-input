@@ -68,10 +68,23 @@ My goal here is to document the steps I take to get a TypeScript library up-and-
     - added `rollup-plugin-commonjs`, `rollup-plugin-node-resolve`, as development dependencies
 
 - at this point, after `yarn build`, I can put the contents of `ctz-input.js` in the browser; the name `ctzInput` is available,
-implying `ctzInput.CtzInput`, etc.
+implying `ctzInput.CtzInput`, etc. Also ported `ctzRadio`, `ctzSlider`.
 
 - things that are not clear to me:
   - how to move css into place
   - how to test
   - how to install in an HTMLWidget (how to test an HTMLWidget)
 
+- for now, next steps:
+  - set up a webpack application, i.e. a test page that uses the scripts
+  - write some tests on the page
+  - start to think about publishing
+
+- `webpack` 
+  - add `webpack`, `webpack-cli`, and `webpack-dev-server` as dev depenencies
+  - create a new folder, `dist`, create:
+    - `index.html` page to be served
+    - `app.js` script to be run
+    - `webpack.config.js` config settings
+  - need to think about how to write `app.js` in TypeScript
+  - run `yarn webpack-dev-server` then go to `http://localhost:8080/dist/`
