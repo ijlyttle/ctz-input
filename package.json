@@ -4,7 +4,7 @@
   "author": {
     "name": "Ian Lyttle"
   },
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "main": "build/ctz-input.js",
   "devDependencies": {
