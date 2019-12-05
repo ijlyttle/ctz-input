@@ -1,0 +1,13 @@
+/* space the form-labels */
+.ctz-radio form label {
+  display: inline-block;
+  margin: 5px 10px 3px 0;
+  font-size: 0.85em;
+}
+
+/* space the label-inputs */
+.ctz-radio label input {
+  vertical-align: baseline;
+  margin-right: 5px;
+}
+

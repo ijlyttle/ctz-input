@@ -8,6 +8,7 @@
   "license": "MIT",
   "main": "build/ctz-input.js",
   "devDependencies": {
+    "concat": "^1.0.3",
     "eslint": "^6.7.2",
     "rollup": "^1.27.7",
     "rollup-plugin-commonjs": "^10.1.0",
@@ -19,7 +20,9 @@
   },
   "dependencies": {},
   "scripts": {
-    "build": "yarn build:only",
-    "build:only": "tsc && rollup -c"
+    "build": "yarn build:only && yarn concatCss",
+    "build:only": "tsc && rollup -c",
+    "concatCss": "concat -o build/ctz-input.css src/css/CtzInput.css src/css/CtzRadio.css src/css/CtzSlider.css",
+    "start": "webpack-dev-server"
   }
 }

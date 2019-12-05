@@ -12,6 +12,6 @@ This idea started out life as written as an R HTMLWidget, which works, but I fea
 
 The big drawback at this point:
 
-- I don't really know what I'm doing in a TypeScript project.
+- I am just learning how to work in a TypeScript project.
 
 Stay tuned...
