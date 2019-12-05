@@ -20,9 +20,10 @@
   },
   "dependencies": {},
   "scripts": {
-    "build": "yarn build:only && yarn concatCss",
-    "build:only": "tsc && rollup -c",
-    "concatCss": "concat -o build/ctz-input.css src/css/CtzInput.css src/css/CtzRadio.css src/css/CtzSlider.css",
-    "start": "webpack-dev-server"
+    "build": "yarn build:src",
+    "build:src": "yarn tsc:src && rollup -c && yarn cssSrc",
+    "cssSrc": "concat -o build/ctz-input.css src/css/CtzInput.css src/css/CtzRadio.css src/css/CtzSlider.css",
+    "start": "webpack-dev-server",
+    "tsc:src": "tsc -b src/tsconfig.src.json"
   }
 }
