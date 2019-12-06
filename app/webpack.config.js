@@ -1,5 +1,5 @@
 module.exports = {
-//  mode: 'development',
+  mode: 'development',
   entry: './app/assets/js/app.ts',
   devtool: 'inline-source-map', // helps debigging
   resolve: {

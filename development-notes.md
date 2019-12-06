@@ -81,10 +81,13 @@ implying `ctzInput.CtzInput`, etc. Also ported `ctzRadio`, `ctzSlider`.
   - start to think about publishing
 
 - `webpack` 
+  - goals:
+    - the goal here is to build a webpage taht will serve as a visual regression of sorts for the functionality of the inputs.
+    - a secondary goal is that this page be used as a testbed for jest-puppeteer tests.
+    - this way, the R package depends need test only the HTMLWidget bindings, which will be sparse.
   - add `webpack`, `webpack-cli`, and `webpack-dev-server` as dev depenencies
-  - create a new folder, `dist`, create:
+  - create a new folder, `app`, create:
     - `index.html` page to be served
-    - `app.js` script to be run
+    - `assets/js/app.ts` script to be run
     - `webpack.config.js` config settings
-  - need to think about how to write `app.js` in TypeScript
-  - run `yarn webpack-dev-server` then go to `http://localhost:8080/dist/`
+  - run `yarn webpack-dev-server` then go to `http://localhost:8080/app/`

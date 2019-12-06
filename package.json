@@ -1,9 +1,15 @@
 {
   "name": "ctz-input",
-  "description": "Notebook-style HTML inputs, inspired by Observable",
+  "description": "Notebook-style HTML inputs. As the appearance and functionality of these inputs is heavily inspired by Observable, Jeremey Ashkenas is listed as a contributor.",
   "author": {
     "name": "Ian Lyttle"
   },
+  "contributors": [
+    {
+      "name": "Jeremy Ashkenas",
+      "url": "https://observablehq.com/@jashkenas/inputs"
+    }
+  ],
   "version": "0.0.3",
   "license": "MIT",
   "main": "build/ctz-input.js",
@@ -19,7 +25,9 @@
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "rollup-plugin-sourcemaps": "^0.4.2"
+  },
   "scripts": {
     "build": "yarn build:src",
     "build:src": "yarn tsc:src && rollup -c && yarn cssSrc",
