@@ -1,0 +1,39 @@
+/* bring the widget-label closer to the inputs */
+.ctz-input label {
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+/* format the description */
+.ctz-input .description {
+  font-size: 1em;
+  font-style: italic;
+  font-family: "Source Serif Pro", "Times New Roman", Times, serif;
+}
+
+.ctz-input input {
+  display: inline;
+  vertical-align: middle;
+}
+
+.ctz-input output {
+  display: inline;
+  vertical-align: middle;
+  font-family: Monaco, Consolas, monospace;
+  margin-left: 1em;
+}
+
+/* space the form-labels */
+.ctz-radio form label {
+  display: inline-block;
+  margin: 5px 10px 3px 0;
+  font-size: 0.85em;
+}
+
+/* space the label-inputs */
+.ctz-radio label input {
+  vertical-align: baseline;
+  margin-right: 5px;
+}
+
+

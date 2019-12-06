@@ -1,6 +1,5 @@
 .DS_Store
 .jekyll-metadata
 .yarnclean
-build/*
 node_modules
 npm-debug.log*
