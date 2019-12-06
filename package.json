@@ -10,7 +10,7 @@
       "url": "https://observablehq.com/@jashkenas/inputs"
     }
   ],
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "main": "build/ctz-input.js",
   "devDependencies": {
