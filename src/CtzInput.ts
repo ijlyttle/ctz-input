@@ -5,6 +5,7 @@ export class CtzInput {
   _form: HTMLFormElement;
   _description: HTMLElement;
   _value: any;
+  _inputValue: any;
 
   constructor(id: string, cls: string) {
 
