@@ -63,13 +63,21 @@ export class CtzInput {
             this._form.onsubmit = (event) => {
                 event.preventDefault();
             };
-            // TODO: need a better way to enforce legal values of `verb`
-            if (verb === "oninput" || verb === "onchange") {
-                this._container[verb] = (event) => {
-                    event.stopPropagation();
-                };
-            }
+            // stop propogation of "previous" action
+            this._container.addEventListener(verb, (event) => {
+                event.stopPropagation();
+            });
         }
+        // define the event we want to monitor
+        const action = submit ? 'submit' : verb;
+        // when monitored event occurs, and if the value has changed, dispatch `ctz-value` 
+        this._container.addEventListener(action, (event) => {
+            // console.log(`${this._value} ${this._inputValue}`)
+            if (this._value !== this._inputValue) {
+                this._value = this._inputValue;
+                this._container.dispatchEvent(new CustomEvent('ctz-value', { bubbles: true }));
+            }
+        });
     }
 }
 //# sourceMappingURL=CtzInput.js.map
