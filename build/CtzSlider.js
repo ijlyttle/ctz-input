@@ -1,4 +1,5 @@
 import { CtzInput } from './CtzInput';
+import './css/CtzSlider.css';
 export class CtzSlider extends CtzInput {
     constructor(id) {
         super(id, 'ctz-slider');

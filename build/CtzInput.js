@@ -1,3 +1,4 @@
+import './css/CtzInput.css';
 export class CtzInput {
     constructor(id, cls) {
         /* determine parent-element */

@@ -1,3 +1,5 @@
+import './css/CtzInput.css'
+
 export class CtzInput {
   _id: string;
   _container: HTMLElement;

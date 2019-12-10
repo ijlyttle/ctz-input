@@ -14,21 +14,20 @@
   "license": "MIT",
   "main": "build/ctz-input.js",
   "devDependencies": {
-    "concat": "^1.0.3",
+    "copyfiles": "^2.1.1",
     "eslint": "^6.7.2",
     "rollup": "^1.27.7",
     "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-css-only": "^1.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.2"
   },
-  "dependencies": {
-    "rollup-plugin-sourcemaps": "^0.4.2"
-  },
   "scripts": {
     "build": "yarn build:src",
-    "build:src": "yarn tsc:src && rollup -c && yarn cssSrc",
-    "cssSrc": "concat -o build/ctz-input.css src/css/CtzInput.css src/css/CtzRadio.css src/css/CtzSlider.css",
+    "build:src": "yarn tsc:src && yarn copyCss && rollup -c",
+    "copyCss": "yarn copyfiles -u 2 \"src/css/*.css\" build/css",
     "tsc:src": "tsc -b src/tsconfig.src.json"
   }
 }

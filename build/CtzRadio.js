@@ -1,4 +1,5 @@
 import { CtzInput } from './CtzInput';
+import './css/CtzRadio.css';
 export class CtzRadio extends CtzInput {
     constructor(id) {
         super(id, 'ctz-radio');

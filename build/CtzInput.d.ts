@@ -1,3 +1,4 @@
+import './css/CtzInput.css';
 export declare class CtzInput {
     _id: string;
     _container: HTMLElement;

@@ -1,4 +1,5 @@
 import { CtzInput } from './CtzInput';
+import './css/CtzSlider.css';
 export declare class CtzSlider extends CtzInput {
     _fnTransform(arg0: number): any;
     _fnPrecision(arg0: any): void;
