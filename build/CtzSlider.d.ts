@@ -6,6 +6,6 @@ export declare class CtzSlider extends CtzInput {
     _slider: HTMLInputElement;
     _display: HTMLOutputElement;
     constructor(id: string);
-    init(min: number, max: number, value: number, step: number, fnTransform: (x: number) => number, precision: number, maxWidth: number): void;
+    init(min: number, max: number, value: number, step: number, fnTransform: (x: number) => number, precision: number, maxWidth: number, submit: string | boolean | undefined): void;
 }
 //# sourceMappingURL=CtzSlider.d.ts.map

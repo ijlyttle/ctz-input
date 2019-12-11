@@ -69,13 +69,21 @@
               this._form.onsubmit = (event) => {
                   event.preventDefault();
               };
-              // TODO: need a better way to enforce legal values of `verb`
-              if (verb === "oninput" || verb === "onchange") {
-                  this._container[verb] = (event) => {
-                      event.stopPropagation();
-                  };
-              }
+              // stop propogation of "previous" action
+              this._container.addEventListener(verb, (event) => {
+                  event.stopPropagation();
+              });
           }
+          // define the event we want to monitor
+          const action = submit ? 'submit' : verb;
+          // when monitored event occurs, and if the value has changed, dispatch `ctz-value` 
+          this._container.addEventListener(action, (event) => {
+              // console.log(`${this._value} ${this._inputValue}`)
+              if (this._value !== this._inputValue) {
+                  this._value = this._inputValue;
+                  this._container.dispatchEvent(new CustomEvent('ctz-value', { bubbles: true }));
+              }
+          });
       }
   }
 
@@ -87,7 +95,8 @@
               // we use arrow notation to preserve the meaning of `this`
               const data = new FormData(this._form);
               const value = data.get(this.id);
-              this._value = value;
+              console.log(value);
+              this._inputValue = value;
           };
       }
       init(choices, value, submit) {
@@ -113,9 +122,13 @@
               label.appendChild(document.createTextNode(c.label));
               this._form.appendChild(label);
           });
-          super.considerSubmit(submit, 'oninput');
-          // invoke input to set _value
-          this._form.dispatchEvent(new CustomEvent('input'));
+          super.considerSubmit(submit, 'input');
+          // initialize: invoke input 
+          this._form.dispatchEvent(new CustomEvent('input', { bubbles: true }));
+          // invoke submit, if applicable
+          if (submit) {
+              this._form.dispatchEvent(new CustomEvent('submit', { bubbles: true }));
+          }
       }
   }
 
@@ -132,10 +145,9 @@
           this._form.appendChild(this._display);
           /* listnener */
           this._slider.oninput = event => {
-              console.log(this._fnTransform);
               const value = this._fnPrecision(this._fnTransform(Number(this._slider.value)));
               this._display.innerText = String(value);
-              this._value = value;
+              this._inputValue = value;
           };
       }
       _fnTransform(arg0) {
@@ -144,7 +156,7 @@
       _fnPrecision(arg0) {
           throw new Error("Method not implemented.");
       }
-      init(min, max, value, step, fnTransform, precision, maxWidth) {
+      init(min, max, value, step, fnTransform, precision, maxWidth, submit) {
           this._slider.setAttribute('min', String(min));
           this._slider.setAttribute('max', String(max));
           this._slider.setAttribute('step', String(step));
@@ -159,8 +171,13 @@
                       return Math.round(x * byTen) / byTen;
                   } :
                   x => x;
-          // invoke input
-          this._slider.dispatchEvent(new CustomEvent('input'));
+          super.considerSubmit(submit, 'input');
+          // initialize: invoke input
+          this._slider.dispatchEvent(new CustomEvent('input', { bubbles: true }));
+          // invoke submit, if applicable
+          if (submit) {
+              this._form.dispatchEvent(new CustomEvent('submit', { bubbles: true }));
+          }
       }
   }
 

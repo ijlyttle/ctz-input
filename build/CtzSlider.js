@@ -13,10 +13,9 @@ export class CtzSlider extends CtzInput {
         this._form.appendChild(this._display);
         /* listnener */
         this._slider.oninput = event => {
-            console.log(this._fnTransform);
             const value = this._fnPrecision(this._fnTransform(Number(this._slider.value)));
             this._display.innerText = String(value);
-            this._value = value;
+            this._inputValue = value;
         };
     }
     _fnTransform(arg0) {
@@ -25,7 +24,7 @@ export class CtzSlider extends CtzInput {
     _fnPrecision(arg0) {
         throw new Error("Method not implemented.");
     }
-    init(min, max, value, step, fnTransform, precision, maxWidth) {
+    init(min, max, value, step, fnTransform, precision, maxWidth, submit) {
         this._slider.setAttribute('min', String(min));
         this._slider.setAttribute('max', String(max));
         this._slider.setAttribute('step', String(step));
@@ -40,8 +39,13 @@ export class CtzSlider extends CtzInput {
                     return Math.round(x * byTen) / byTen;
                 } :
                 x => x;
-        // invoke input
-        this._slider.dispatchEvent(new CustomEvent('input'));
+        super.considerSubmit(submit, 'input');
+        // initialize: invoke input
+        this._slider.dispatchEvent(new CustomEvent('input', { bubbles: true }));
+        // invoke submit, if applicable
+        if (submit) {
+            this._form.dispatchEvent(new CustomEvent('submit', { bubbles: true }));
+        }
     }
 }
 //# sourceMappingURL=CtzSlider.js.map

@@ -8,7 +8,8 @@ export class CtzRadio extends CtzInput {
             // we use arrow notation to preserve the meaning of `this`
             const data = new FormData(this._form);
             const value = data.get(this.id);
-            this._value = value;
+            console.log(value);
+            this._inputValue = value;
         };
     }
     init(choices, value, submit) {
@@ -34,9 +35,13 @@ export class CtzRadio extends CtzInput {
             label.appendChild(document.createTextNode(c.label));
             this._form.appendChild(label);
         });
-        super.considerSubmit(submit, 'oninput');
-        // invoke input to set _value
-        this._form.dispatchEvent(new CustomEvent('input'));
+        super.considerSubmit(submit, 'input');
+        // initialize: invoke input 
+        this._form.dispatchEvent(new CustomEvent('input', { bubbles: true }));
+        // invoke submit, if applicable
+        if (submit) {
+            this._form.dispatchEvent(new CustomEvent('submit', { bubbles: true }));
+        }
     }
 }
 //# sourceMappingURL=CtzRadio.js.map
