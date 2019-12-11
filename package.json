@@ -14,6 +14,7 @@
   "license": "MIT",
   "main": "build/ctz-input.js",
   "devDependencies": {
+    "@types/jest": "^24.0.23",
     "copyfiles": "^2.1.1",
     "eslint": "^6.7.2",
     "jest": "^24.9.0",
@@ -22,6 +23,7 @@
     "rollup-plugin-css-only": "^1.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-sourcemaps": "^0.4.2",
+    "ts-jest": "^24.2.0",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.2"
   },
@@ -34,5 +36,10 @@
     "tsc:app": "tsc -b app/tsconfig.app.json",
     "tsc:src": "tsc -b src/tsconfig.src.json",
     "test": "jest"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    }
   }
 }
