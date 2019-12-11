@@ -28,8 +28,6 @@ export class CtzSlider extends CtzInput {
     /* listnener */
     this._slider.oninput = event => {
 
-      console.log(this._fnTransform);
-
       const value =
         this._fnPrecision(
           this._fnTransform(
@@ -38,12 +36,13 @@ export class CtzSlider extends CtzInput {
         );
 
       this._display.innerText = String(value);
-      this._value = value;
+      this._inputValue = value;
     };
   }
 
   init(min: number, max: number, value: number, step: number, 
-       fnTransform: (x: number) => number, precision: number, maxWidth: number) {
+       fnTransform: (x: number) => number, precision: number, 
+       maxWidth: number, submit: string | boolean | undefined) {
 
     this._slider.setAttribute('min', String(min));
     this._slider.setAttribute('max', String(max));
@@ -61,8 +60,15 @@ export class CtzSlider extends CtzInput {
        } :
        x => x;
 
-    // invoke input
-    this._slider.dispatchEvent(new CustomEvent('input'));
+    super.considerSubmit(submit, 'input');
+
+    // initialize: invoke input
+    this._slider.dispatchEvent(new CustomEvent('input', {bubbles: true}));
+    
+    // invoke submit, if applicable
+    if (submit) {
+      this._form.dispatchEvent(new CustomEvent('submit', {bubbles: true}));
+    }
   }
 
 }
