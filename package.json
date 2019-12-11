@@ -26,8 +26,11 @@
   },
   "scripts": {
     "build": "yarn build:src",
-    "build:src": "yarn tsc:src && yarn copyCss && rollup -c",
-    "copyCss": "yarn copyfiles -u 2 \"src/css/*.css\" build/css",
+    "build:app": "yarn tsc:app && yarn copyCss:app && rollup -c app/rollup.config.js",
+    "build:src": "yarn tsc:src && yarn copyCss:src && rollup -c",
+    "copyCss:app": "yarn copyfiles -u 2 \"src/css/*.css\" app/build/src/css",
+    "copyCss:src": "yarn copyfiles -u 2 \"src/css/*.css\" build/css",
+    "tsc:app": "tsc -b app/tsconfig.app.json",
     "tsc:src": "tsc -b src/tsconfig.src.json"
   }
 }
