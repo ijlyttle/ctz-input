@@ -12,7 +12,6 @@ export class CtzRadio extends CtzInput {
       // we use arrow notation to preserve the meaning of `this`
       const data = new FormData(this._form);
       const value = data.get(this.id);
-      console.log(value);
 
       this._inputValue = value;
     };
